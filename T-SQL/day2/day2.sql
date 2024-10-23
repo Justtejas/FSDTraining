@@ -263,13 +263,53 @@ update Employee set DepartmentID = 3 where EmployeeID = 9
 
 --RoomID,RoomType,Availability
 
+create table room (
+    roomid int primary key not null,
+    roomtype varchar(255) not null,
+    [availability] varchar(20) check (availability in ('available', 'unavailable')) not null
+)
+
 --create Bookins Table with below columns
 
 --BookingID,RoomID,CustomerName,CheckInDate,CheckInDate
- 
+ create table bookings (
+    bookingid int primary key not null,
+    roomid int not null,
+    customername varchar(255) not null,
+    checkindate date not null,
+    checkoutdate date not null,
+    foreign key (roomid) references room(roomid) on delete cascade
+)
 --Insert some test data with both  the tables
+insert into room (roomid, roomtype, [availability]) values
+(1, 'single', 'available'),
+(2, 'double', 'available'),
+(3, 'suite', 'available'),
+(4, 'deluxe', 'unavailable')
 
+insert into bookings (bookingid, roomid, customername, checkindate, checkoutdate) values
+(1, 1, 'Varun', '2024-10-15', '2024-10-20'),
+(2, 2, 'Alisha', '2024-10-18', '2024-10-22')
 --Ensure both the tables are having Entity relationship
+select * from room
+select * from bookings
 
---Write a transaction that books a room for a customer, ensuring the room is marked as unavailable.
- 
+--Write a transaction that books a room for a customer, ensuring the room is marked as unavailable
+
+begin transaction
+if exists (select roomid from room where roomid = 3 and availability = 'available')
+begin
+	insert into bookings (bookingid, roomid, customername, checkindate, checkoutdate)
+    values (4, 3,'Neymar','2024-10-25','2024-11-05');
+	update room
+    set availability = 'unavailable'
+    where roomid = 3;
+
+	print 'room booked successfully.'
+end
+else
+begin
+rollback transaction
+print 'Room is unavailable'
+end
+commit transaction
