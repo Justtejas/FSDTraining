@@ -8,7 +8,7 @@
 
         public override string ToString()
         {
-            return $"StudentID: {StudentID},\t Name: {Name}, \t Age: {Age}";
+            return $"StudentID: {StudentID}\t Name: {Name}\t Age: {Age}";
         }
         public static void GetTeenageStudents(List<Student> students)
         {
@@ -31,7 +31,6 @@
             {
                 Console.WriteLine(student.ToString());
             }
-
         }
     }
 }
