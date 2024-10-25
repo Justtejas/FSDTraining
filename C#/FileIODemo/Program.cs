@@ -1,6 +1,7 @@
 ﻿using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Xml.Serialization;
 
 namespace FileIODemo
@@ -13,7 +14,8 @@ namespace FileIODemo
             //DirDemo();
             //StreamWriterAndReaderDemo();
             //JSONSerializeAndDeserializeDemo();
-            XMLSerializeAndDeserializeDemo();
+            //XMLSerializeAndDeserializeDemo();
+            RegexMatching();
         }
         public static void WriteToFile()
         {
@@ -103,6 +105,42 @@ namespace FileIODemo
                 Products prod = (Products)xmlSerializer.Deserialize(fs);
                 Console.WriteLine("\nDeserialized Data: " + prod);
             }
+        }
+        public static void RegexMatching()
+        {
+            string emailPattern = @"^[^@\s]+@[^@\s]+\.(com|net|org|gov|in)$";
+            string[] emails = {"tejas@gmail.com","gmail.com@tejas","alkfjasdlkfjlksdafjlksk@sdkflksdjflksdjf.com","hexaw+are@hexaware.com"};
+            foreach (string email in emails)
+            {
+                if(Regex.IsMatch(email, emailPattern))
+                {
+                    Console.WriteLine($"Valid Email: {email}");
+                }
+                else
+                {
+                    Console.WriteLine($"Invalid Email: {email}");
+                }
+            }
+
+            Console.WriteLine("Enter the text to extract numbers from:");
+            string input = Console.ReadLine();
+            string numberPattern = @"\d+";
+            foreach(Match match in Regex.Matches(input, numberPattern))
+            {
+                Console.WriteLine($"Found Number: {match.Value}");
+            }
+            string input2 = "Kejas Pankoji";
+            string res = Regex.Replace(input2, "k", match => match.Value == "K" ? "T" : "t",
+                RegexOptions.IgnoreCase);
+            Console.WriteLine(res);
+            
+            string sentence = "It is easy to follow and easy to practice";
+            string wordToHighlight = "easy";
+
+            string ress = Regex.Replace(sentence,wordToHighlight,match => $"[{match.Value}]",RegexOptions.IgnoreCase);
+            Console.WriteLine(ress);
+
+
         }
     }
 }
