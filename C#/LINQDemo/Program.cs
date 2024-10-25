@@ -36,7 +36,9 @@
             //OfTypeOperator oto = new();
             //oto.DisplayList();
             //OrderByDemo();
-            GroupByDemo();
+            //GroupByDemo();
+            //JoinsDemo();
+            FirstDemo();
 
         }
         public static void OrderByDemo()
@@ -131,6 +133,67 @@
                     Console.WriteLine(stud);
                 }
             }
+        }
+        public static void JoinsDemo()
+        {
+            IList<Student> students = new List<Student>()
+            {
+                new() { StudentID = 1, Name = "Tejas", Age = 17, CourseID = 1 },
+                new() { StudentID = 2, Name = "Akash", Age = 20, CourseID = 2 },
+                new() { StudentID = 3, Name = "Amol", Age = 20, CourseID = 2 },
+                new() { StudentID = 4, Name = "Aniket", Age = 21, CourseID = 2 },
+                new() { StudentID = 5, Name = "Prathm", Age = 21, CourseID = 1 },
+            };
+
+            IList<Course> courses = new List<Course>()
+            {
+                new() {  CourseID = 1, CourseName = "Java" },
+                new() {  CourseID = 2, CourseName = "Python" },
+            };
+
+            var joinedList = students.Join(
+               courses,
+               student => student.CourseID,
+               course => course.CourseID,
+               (student, course) => new
+               {
+                    studentName = student.Name,
+                    studentAge = student.Age,
+                    studentCourse = course.CourseName
+               }).ToList();
+
+            Console.WriteLine("\n ---------- From Students And Courses List ---------------");
+            foreach(var student in joinedList)
+            {
+                Console.WriteLine(student);
+            }
+        }
+        public static void FirstDemo()
+        {
+            IList<Student> students = new List<Student>()
+            {
+                new() { StudentID = 1, Name = "Tejas", Age = 17, CourseID = 1 },
+                new() { StudentID = 2, Name = "Akash", Age = 20, CourseID = 2 },
+                new() { StudentID = 3, Name = "Amol", Age = 20, CourseID = 2 },
+                new() { StudentID = 4, Name = "Aniket", Age = 21, CourseID = 2 },
+                new() { StudentID = 5, Name = "Prathm", Age = 21, CourseID = 1 },
+            };
+
+            Student firstResult = students.First();
+            Student lastRes = students.Last();
+            Console.WriteLine($"First Element from the students is {firstResult.Name} {firstResult.StudentID}");
+            Console.WriteLine($"Last Element from the students is {lastRes.Name} {lastRes.StudentID}");
+            List<int> numbers = new List<int>() { 45,49,101,143};
+            var evenList = numbers.Where(num => (num & 1) == 0);
+            // can't get first from empty list
+            //Console.WriteLine($"First even from even list is {evenList.First()}");
+            // FirstOrDefault
+            Console.WriteLine($"First even from even list is {evenList.FirstOrDefault()}");
+            // last
+            // can't get first from empty list
+            //Console.WriteLine($"First even from even list is {evenList.Last()}");
+            // LastOrDefault
+            Console.WriteLine($"First even from even list is {evenList.LastOrDefault()}");
         }
     }
 }
