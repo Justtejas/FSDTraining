@@ -21,10 +21,10 @@ namespace Assignments.AssignmentOne
             List<Author> authors = new()
             {
                 new () {AuthorID = 1, AuthorName = "Tejas"},
-                new () {AuthorID = 1, AuthorName = "Tejas"},
-                new () {AuthorID = 1, AuthorName = "Tejas"},
-                new () {AuthorID = 1, AuthorName = "Tejas"},
-                new () {AuthorID = 1, AuthorName = "Tejas"},
+                new () {AuthorID = 2, AuthorName = "Akash"},
+                new () {AuthorID = 3, AuthorName = "Anil"},
+                new () {AuthorID = 4, AuthorName = "Omar"},
+                new () {AuthorID = 5, AuthorName = "ThePrimeagen"},
             };
             SerializeJSON(@"C:\Users\dell\Desktop\Hexaware\books.json", books);
             SerializeJSON(@"C:\Users\dell\Desktop\Hexaware\authors.json", authors);
