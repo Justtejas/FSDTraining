@@ -1,4 +1,5 @@
 ﻿using Assignments.AssignmentOne;
+using Assignments.AssignmentThree;
 using Assignments.AssignmentTwo;
 
 namespace Assignments
@@ -9,8 +10,10 @@ namespace Assignments
         {
             //Assignment1 assign1 = new();
             //assign1.AssignmentOne();
-            Assignment2 assignment2 = new();
-            assignment2.AssignmentTwo();
+            //Assignment2 assignment2 = new();
+            //assignment2.AssignmentTwo();
+            Assignment3 assignment3 = new ();
+            assignment3.AssignmentThree();
         }
     }
 }
