@@ -7,7 +7,7 @@
 
         public void Withdraw(decimal amount)
         {
-            if (amount < 0)
+            if (amount < 0 || amount < Balance)
             {
                 Console.WriteLine("Cannot withdraw");
             }
