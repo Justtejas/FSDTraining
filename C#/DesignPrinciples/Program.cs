@@ -1,4 +1,5 @@
-﻿using DesignPrinciples.LSP;
+﻿using DesignPrinciples.ISP;
+using DesignPrinciples.LSP;
 using DesignPrinciples.OCP;
 using DesignPrinciples.SRP;
 namespace DesignPrinciples
@@ -11,8 +12,10 @@ namespace DesignPrinciples
             //srpd.SRPDemoMethod();
             //OCPDemo ocpd = new();
             //ocpd.OCPDemoMethod();
-            LSPDemo lspd = new();
-            lspd.LSPDemoMethod();
+            //LSPDemo lspd = new();
+            //lspd.LSPDemoMethod();
+            ISPDemo ispd = new();
+            ispd.ISPDemoMethod();
         }
     }
 }
