@@ -1,4 +1,5 @@
-﻿using DesignPrinciples.OCP;
+﻿using DesignPrinciples.LSP;
+using DesignPrinciples.OCP;
 using DesignPrinciples.SRP;
 namespace DesignPrinciples
 {
@@ -10,6 +11,8 @@ namespace DesignPrinciples
             //srpd.SRPDemoMethod();
             //OCPDemo ocpd = new();
             //ocpd.OCPDemoMethod();
+            LSPDemo lspd = new();
+            lspd.LSPDemoMethod();
         }
     }
 }
