@@ -1,4 +1,6 @@
-﻿namespace DesignPrinciples.ISP
+﻿using System.Globalization;
+
+namespace DesignPrinciples.ISP
 {
     internal class SavingsAccount : IBasicAccount
     {
@@ -12,7 +14,7 @@
                 Console.WriteLine("Cannot withdraw");
             }
             Balance -= amount;
-            Console.WriteLine($"{amount:C} withdrawn, current balance: {Balance:C}");
+            Console.WriteLine($"{amount.ToString("C",CultureInfo.CreateSpecificCulture("hi-IN"))} withdrawn, current balance: {Balance:C}");
 
         }
         public void Deposit(decimal amount)
