@@ -1,4 +1,5 @@
-﻿using Assignments.AssignmentOne;
+﻿using Assignments.AssignmentFour;
+using Assignments.AssignmentOne;
 using Assignments.AssignmentThree;
 using Assignments.AssignmentTwo;
 
@@ -12,8 +13,10 @@ namespace Assignments
             //assign1.AssignmentOne();
             //Assignment2 assignment2 = new();
             //assignment2.AssignmentTwo();
-            Assignment3 assignment3 = new ();
-            assignment3.AssignmentThree();
+            //Assignment3 assignment3 = new ();
+            //assignment3.AssignmentThree();
+            LibraryManagement lm = new LibraryManagement();
+            lm.LibraryManagementMethod();
         }
     }
 }

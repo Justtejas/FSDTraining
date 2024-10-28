@@ -22,8 +22,9 @@ namespace DesignPrinciples
             // Dependency inversion - states that high level modules should not depend upon low level modules/class
             // both should depend upon abstraction
             // abstraction should not depend upon details but details should depend upon abstraction
-            DIPDemo dipd = new();
-            dipd.DIPDemoMethod();
+            //DIPDemo dipd = new();
+            //dipd.DIPDemoMethod();
+
         }
     }
 }
