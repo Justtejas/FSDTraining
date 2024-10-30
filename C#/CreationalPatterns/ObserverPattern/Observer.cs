@@ -16,8 +16,8 @@
 
             bitcoinStock.Attach(inverstor3);
             bitcoinStock.Attach(inverstor2);
-            bitcoinStock.Notify();
-            petrolStock.Notify();
+            petrolStock.Price = 75;
+            bitcoinStock.Price = 900;
         }
     }
 }
