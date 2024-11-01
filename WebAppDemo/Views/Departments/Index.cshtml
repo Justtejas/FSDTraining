@@ -1,0 +1,30 @@
+﻿@model IEnumerable<WebAppDemo.Models.Department>;
+
+<h1>This is from Departments Controller</h1>
+
+<h3> @ViewData["Message"]</h3>
+<a asp-action="Create">Create New Department</a>
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <td>No </td>       
+            <td>Name</td>
+            <td>Location<td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+           <tr>
+                <td>@item.DepartmentID</td>
+                <td>@item.Name</td>
+                <td>@item.Location</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.DepartmentID">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.DepartmentID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
