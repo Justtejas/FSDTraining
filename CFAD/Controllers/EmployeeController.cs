@@ -12,7 +12,6 @@ namespace CFAD.Controllers
         {
             _context = context;
         }
-
         public IActionResult Index()
         {
             var employees=_context.Employees.Include(e => e.Department).ToList();
@@ -76,8 +75,7 @@ namespace CFAD.Controllers
                 _context.Employees.Remove(employees);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
-            }          
-
+            }
             return View();
         }
     }
