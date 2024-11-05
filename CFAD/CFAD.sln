@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CFAD", "CFAD.csproj", "{73C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBFA", "..\DBFA\DBFA.csproj", "{0CC7FE88-ED91-4861-88A1-93D7F655101A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CFAssignment", "..\CFAssignment\CFAssignment.csproj", "{3369C41F-EF3C-4546-8A18-DF4023756471}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0CC7FE88-ED91-4861-88A1-93D7F655101A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CC7FE88-ED91-4861-88A1-93D7F655101A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CC7FE88-ED91-4861-88A1-93D7F655101A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3369C41F-EF3C-4546-8A18-DF4023756471}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3369C41F-EF3C-4546-8A18-DF4023756471}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3369C41F-EF3C-4546-8A18-DF4023756471}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3369C41F-EF3C-4546-8A18-DF4023756471}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
