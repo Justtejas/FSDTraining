@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using WebAPICFDemo.Data;
+using WebAPICFDemo.Repositories;
 
 namespace WebAPICFDemo
 {
@@ -13,6 +14,8 @@ namespace WebAPICFDemo
 
             builder.Services.AddControllers();
             builder.Services.AddDbContext<Context>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("myconnection")));
+            builder.Services.AddScoped<IDepartmentServices,DepartmentService>();
+            builder.Services.AddScoped<IEmployeeServices,EmployeeService>();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

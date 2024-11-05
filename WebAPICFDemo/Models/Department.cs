@@ -15,7 +15,7 @@ namespace WebAPICFDemo.Models
         [DisplayName("Department Head")]
         public string DepartmentHead { get; set; }
 
-        public virtual ICollection<Employee> Employees { get; set; }
+        public virtual ICollection<Employee>? Employees { get; set; }
 
     }
 }

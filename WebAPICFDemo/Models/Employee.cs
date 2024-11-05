@@ -12,6 +12,6 @@ namespace WebAPICFDemo.Models
         public string Email { get; set; }
         public decimal Salary { get; set; }
         public int DepartmentID { get; set; }
-        public virtual Department Department { get; set; }
+        public virtual Department? Department { get; set; }
     }
 }
