@@ -35,7 +35,7 @@ namespace DBFAAPI.Controllers
             return Ok(product);
         }
 
-        [HttpGet("product/name/{productName}")]
+        [HttpGet("product/name/{productName:length(3,12)}")]
         public IActionResult GetProductByName(string productName)
         {
             var products = _productServices.GetProductByName(productName);

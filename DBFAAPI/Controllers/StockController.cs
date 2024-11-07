@@ -13,19 +13,19 @@ namespace DBFAAPI.Controllers
         {
             _stockServices = stockServices;
         }
-        [HttpGet("stock/{storeID}/{productID}")]
+        [HttpGet("stock/{storeID:int:min(1)}/{productID:int:min(1)}")]
         public IActionResult GetQuantityOfAProductInStore(int storeID, int productID)
         {
             var quantityOfAProductInStore = _stockServices.GetQuantityOfAProductInStore(productID, storeID);
             return Ok($"The Total Quantity of Product with ProductID: {productID} in Store with StoreID: {storeID} is :{quantityOfAProductInStore}");
         }
-        [HttpGet("stock/store/{storeID}")]
+        [HttpGet("stock/store/{storeID:int:min(1)}")]
         public IActionResult GetTotalQuantityInStore(int storeID)
         {
             var totalQuantityInStore = _stockServices.GetTotalQuantityInStore(storeID);
             return Ok($"The Total Quantity of products in Store with StoreID: {storeID} is :{totalQuantityInStore}");
         }
-        [HttpGet("stock/storecount/{storeID}")]
+        [HttpGet("stock/storecount/{storeID:int:min(1)}")]
         public IActionResult GetTotalCountOfProductsInStore(int storeID)
         {
             var totalCountOfProductsInStore = _stockServices.GetTotalCountOfProductsInStore(storeID);
