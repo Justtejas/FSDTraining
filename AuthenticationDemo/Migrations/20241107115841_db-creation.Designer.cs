@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuthenticationDemo.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20241107090536_db-creation")]
+    [Migration("20241107115841_db-creation")]
     partial class dbcreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

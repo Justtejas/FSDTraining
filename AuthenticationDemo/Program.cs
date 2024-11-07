@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(
-       builder.Configuration.GetConnectionString("DefaultConnection")));
+       builder.Configuration.GetConnectionString("defaultConnection")));
 // For Identity
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
       .AddEntityFrameworkStores<ApplicationDBContext>()

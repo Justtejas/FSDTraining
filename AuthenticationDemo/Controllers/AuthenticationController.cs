@@ -56,19 +56,21 @@ namespace Auth_demo1.Controllers
                     new Response
                     {
                         Status = "Error",
-                        Message = " User Creation Failed! Pleas check the user details and try again"
+                        Message = " User Creation Failed! Please check the user details and try again"
                     });
             }
-            if (model.Role == "User")
+            if (model.Role.ToLower() == "user")
             {
                 if (!await roleManager.RoleExistsAsync(UserRoles.User))
                 {
                     await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
                 }
                 if (await roleManager.RoleExistsAsync(UserRoles.User))
+                {
                     await userManager.AddToRoleAsync(user, UserRoles.User);
+                }
             }
-            if (model.Role == "Admin")
+            if (model.Role.ToLower() == "admin")
             {
                 if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
                 {
@@ -88,6 +90,7 @@ namespace Auth_demo1.Controllers
             if (userExist != null && await userManager.CheckPasswordAsync(userExist,login.Password))
             {
                 var userRoles = await userManager.GetRolesAsync(userExist);
+                _logger.LogInformation("User roles: {Roles}", string.Join(", ", userRoles));
                 var authClaims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, userExist.UserName),
@@ -98,15 +101,16 @@ namespace Auth_demo1.Controllers
                     authClaims.Add(new Claim(ClaimTypes.Role, userRole));
                 }
                 var authSignInKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Key"]));
-                _logger.LogInformation("User role",authClaims[2].Value);
+                _logger.LogInformation("User roles: {Roles}", string.Join(", ",
+                authClaims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value)));
 
                 var token = new JwtSecurityToken(
                         issuer: configuration["JWT:Issuer"],
                         audience: configuration["JWT:Audience"],
                         expires: DateTime.Now.AddMinutes(20),
+                        claims: authClaims,
                         signingCredentials: new SigningCredentials(authSignInKey, SecurityAlgorithms.HmacSha256)
                         );
-
                 return Ok(new
                 {
                     token  = new JwtSecurityTokenHandler().WriteToken(token),
