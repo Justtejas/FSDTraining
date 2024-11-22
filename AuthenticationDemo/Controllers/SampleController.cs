@@ -7,7 +7,7 @@ namespace AuthenticationDemo.Controllers
     [ApiController]
     public class SampleController:ControllerBase
     {
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "User")] 
         //[AllowAnonymous]
         [HttpGet]
         public string GetSampleData()

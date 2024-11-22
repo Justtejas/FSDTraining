@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using WebAPICFDemo.Models;
 using WebAPICFDemo.Repositories;
 
@@ -13,6 +14,7 @@ namespace WebAPICFDemo.Controllers
         {
             _services = services;
         }
+        [EnableCors("MyPolicy")]
         [HttpGet]
         public IActionResult GetAllDepartments()
         {

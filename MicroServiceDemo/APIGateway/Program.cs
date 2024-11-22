@@ -1,28 +1,18 @@
-using Microsoft.EntityFrameworkCore;
-using WebAPICFDemo.Data;
-using WebAPICFDemo.Repositories;
+using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
 
-namespace WebAPICFDemo
+namespace APIGateway
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
+            builder.Configuration.AddJsonFile("Ocelot.json", optional: false, reloadOnChange: true);
+            builder.Services.AddOcelot(builder.Configuration);
             builder.Services.AddControllers();
-            builder.Services.AddDbContext<Context>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("myconnection")));
-            builder.Services.AddScoped<IDepartmentServices,DepartmentService>();
-            builder.Services.AddScoped<IEmployeeServices,EmployeeService>();
-            builder.Services.AddCors(options =>
-            {
-                options.AddPolicy("MyPolicy", builder =>
-                {
-                    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
-                });
-            });
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -37,13 +27,12 @@ namespace WebAPICFDemo
             }
 
             app.UseHttpsRedirection();
-            app.UseCors();
 
             app.UseAuthorization();
 
 
             app.MapControllers();
-
+            await app.UseOcelot();
             app.Run();
         }
     }
